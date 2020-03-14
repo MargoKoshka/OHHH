@@ -71,15 +71,15 @@ void			ft_multi_thread_paint(t_rtv *paint);
 
 ///Добавила///
 void			init_tab_obj(t_rtv *paint, char *src);
-void			add_obj_to_tab(t_rtv *paint, char **tab, int i);
-void			init_light(t_rtv *p, char **tab, int i);
-void			init_sphere(t_rtv *p, char **tab, int i);
-void			init_plane(t_rtv *p, char **tab, int i);
-void			init_cylind(t_rtv *p, char **tab, int i);
-void			init_konys(t_rtv *p, char **tab, int i);
+//void			add_obj_to_tab(t_rtv *paint, char **tab, int i);
+//void			init_light(t_rtv *p, char **tab, int i);
+//void			init_sphere(t_rtv *p, char **tab, int i);
+//void			init_plane(t_rtv *p, char **tab, int i);
+//void			init_cylind(t_rtv *p, char **tab, int i);
+//void			init_konys(t_rtv *p, char **tab, int i);
 char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 double			ft_atof(const char *str);
 int				ft_ahextocolor(char *ahex);
-int             ft_freetab(char **tab);
+//int             ft_freetab(char **tab);
 
 #endif

@@ -1,6 +1,6 @@
 #include "rtv1.h" 
 
-void	init_konys(t_rtv *p, char **tab, int i)
+static void	init_konys(t_rtv *p, char **tab, int i)
 {
     p->object[i] = (t_object *)malloc(sizeof(t_object));
 	p->object[i]->id = (int)"K";
@@ -20,7 +20,7 @@ void	init_konys(t_rtv *p, char **tab, int i)
 	object_data(p->object[i], &p->camera->start);
 }
 
-void	init_cylind(t_rtv *p, char **tab, int i)
+static void	init_cylind(t_rtv *p, char **tab, int i)
 {
     p->object[i] = (t_object *)malloc(sizeof(t_object));
 	p->object[i]->id = (int)"C";
@@ -40,7 +40,7 @@ void	init_cylind(t_rtv *p, char **tab, int i)
 	object_data(p->object[i], &p->camera->start);
 }
 
-void	init_plane(t_rtv *p, char **tab, int i)
+static void	init_plane(t_rtv *p, char **tab, int i)
 {
     p->object[i] = (t_object *)malloc(sizeof(t_object));
 	p->object[i]->id = (int)"P";
@@ -59,7 +59,7 @@ void	init_plane(t_rtv *p, char **tab, int i)
 	object_data(p->object[i], &p->camera->start);
 }
 
-void	init_sphere(t_rtv *p, char **tab, int i)
+static void	init_sphere(t_rtv *p, char **tab, int i)
 {
     p->object[i] = (t_object *)malloc(sizeof(t_object));
 	if (p->object[0] == NULL)
@@ -74,7 +74,7 @@ void	init_sphere(t_rtv *p, char **tab, int i)
 	object_data(p->object[i], &p->camera->start);
 }
 
-void	init_light(t_rtv *p, char **tab, int i)
+static void	init_light(t_rtv *p, char **tab, int i)
 {
     p->light->pos.x = ft_atoi(tab[1]);
 	p->light->pos.y = ft_atoi(tab[2]);
@@ -84,7 +84,7 @@ void	init_light(t_rtv *p, char **tab, int i)
 	p->light->pos = ft_subtraction_vector(&p->light->pos, &p->camera->start);
 }
 
-void	add_obj_to_tab(t_rtv *paint, char **tab, int i)
+static void	add_obj_to_tab(t_rtv *paint, char **tab, int i)
 {
 	if (!ft_strcmp(tab[i], "Light"))
         init_light(paint, tab, i);
@@ -98,7 +98,7 @@ void	add_obj_to_tab(t_rtv *paint, char **tab, int i)
 	    init_konys(paint, tab, i);
 }
 
-int		ft_freetab(char **tab)
+static int		ft_freetab(char **tab)
 {
 	int		i;
 
