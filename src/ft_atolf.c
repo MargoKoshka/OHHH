@@ -1,5 +1,17 @@
 #include "rtv1.h"
 
+int		ft_len_untill(const char *str, char c)
+{
+	int	len;
+
+	len = 0;
+	if (!str)
+		return (0);
+	while (str[len] != c && str[len] != '\0')
+		++len;
+	return (len);
+}
+
 double		ft_atof(const char *str)
 {
 	double	result;
@@ -18,8 +30,6 @@ double		ft_atof(const char *str)
 	}
 	return (result);
 }
-
-
 
 int		ft_ahextocolor(char *ahex)
 {

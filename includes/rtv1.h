@@ -80,5 +80,6 @@ void			init_konys(t_rtv *p, char **tab, int i);
 char			*ft_convert_base(char *nbr, char *base_from, char *base_to);
 double			ft_atof(const char *str);
 int				ft_ahextocolor(char *ahex);
+int             ft_freetab(char **tab);
 
 #endif

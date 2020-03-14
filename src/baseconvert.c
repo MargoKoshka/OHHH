@@ -1,5 +1,25 @@
 #include "rtv1.h"
 
+char	*ft_strrev(char *s)
+{
+	size_t	len;
+	size_t	i;
+	char	swap;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s);
+	while (i != len / 2)
+	{
+		swap = s[i];
+		s[i] = s[len - i - 1];
+		s[len - i - 1] = swap;
+		++i;
+	}
+	return (s);
+}
+
 static size_t	ft_power_s(size_t nb, int power)
 {
 	if (power == 0)

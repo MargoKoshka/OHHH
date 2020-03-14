@@ -1,71 +1,61 @@
 #include "rtv1.h"
 
+
 /*
-** Multiply Vector x Number(Scalar) and return the resulting Vector;
+** Subtract(вычитание векторов V1 из V2 ) two vectors
+** and return the resulting vector
 */
 
-t_vector	ft_multiply_vector_num(t_vector *vector, double num)
+t_vector	ft_subtraction_vector(t_vector *v1, t_vector *v2)
 {
 	t_vector result;
 
-	result.x = num * vector->x;
-	result.y = num * vector->y;
-	result.z = num * vector->z;
+	result.x = v1->x - v2->x;
+	result.y = v1->y - v2->y;
+	result.z = v1->z - v2->z;
 	return (result);
 }
 
-void	ft_unit_vector(t_vector *vector)
-{
-	double		modul_v;
+/*
+** Add(сложение векторов) two vectors and return the resulting vector
+*/
 
-	modul_v = ft_vector_modul(vector);
-	vector->x /= modul_v;
-	vector->y /= modul_v;
-	vector->z /= modul_v;
+t_vector	ft_add_vector(t_vector *v1, t_vector *v2)
+{
+	t_vector result;
+
+	result.x = v1->x + v2->x;
+	result.y = v1->y + v2->y;
+	result.z = v1->z + v2->z;
+	return (result);
 }
 
-t_vector	ft_rotation_vector(t_vector *angle, t_vector *ray)
-{
-	t_vector	dot;
-	double		x;
+/*
+** Multiply two vectors(скалярное умножение векторов vectorDot)
+** and return the resulting scalar (dot product)
+*/
 
-	dot.y = ray->y * cos(angle->x) + ray->z * sin(angle->x);
-	dot.z = -ray->y * sin(angle->x) + ray->z * cos(angle->x);
-	dot.x = ray->x * cos(angle->y) + dot.z * sin(angle->y);
-	dot.z = -ray->x * sin(angle->y) + dot.z * cos(angle->y);
-	x = dot.x;
-	dot.x = x * cos(angle->z) - dot.y * sin(angle->z);
-	dot.y = x * sin(angle->z) + dot.y * cos(angle->z);
-	return (dot);
+double		ft_vector_scalar(t_vector *v1, t_vector *v2)
+{
+	return (v1->x * v2->x + v1->y * v2->y + v1->z * v2->z);
 }
 
-void		ft_rotat_vector(t_vector *angle, t_vector *ray)
-{
-	double		y;
-	double		x;
+/*
+** Modul Vectora(len vector) and return the Scalar;
+** return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
+*/
 
-	y = ray->y;
-	ray->y = y * cos(angle->x) + ray->z * sin(angle->x);
-	ray->z = -y * sin(angle->x) + ray->z * cos(angle->x);
-	x = ray->x;
-	ray->x = x * cos(angle->y) + ray->z * sin(angle->y);
-	ray->z = -x * sin(angle->y) + ray->z * cos(angle->y);
-	x = ray->x;
-	ray->x = x * cos(angle->z) - ray->y * sin(angle->z);
-	ray->y = x * sin(angle->z) + ray->y * cos(angle->z);
+double		ft_vector_modul(t_vector *v)
+{
+	return (sqrt(v->x * v->x + v->y * v->y + v->z * v->z));
 }
 
-void		ft_solve_discriminant(t_discr *discr)
-{
-	discr->discr = (double)(discr->b * discr->b - 4 * discr->a * discr->c);
-}
+/*
+** Проекция vector V1 on vector V2  and return the len vector V1;
+** return (sqrt(pow(v->x, 2) + pow(v->y, 2) + pow(v->z, 2)));
+*/
 
-// y = ray->y;
-// 	dot.y = y * cos(angle->x) + ray->z * sin(angle->x);
-// 	dot.z = -y * sin(angle->x) + ray->z * cos(angle->x);
-// 	x = ray->x;
-// 	dot.x = x * cos(angle->y) + ray->z * sin(angle->y);
-// 	dot.z = -x * sin(angle->y) + ray->z * cos(angle->y);
-// 	x = dot.x;
-// 	dot.x = x * cos(angle->z) - dot.y * sin(angle->z);
-// 	dot.y = x * sin(angle->z) + dot.y * cos(angle->z);
+double		ft_vector_projection_on_ray(t_vector *v1, t_vector *v2)
+{
+	return (ft_vector_scalar(v1, v2) / ft_vector_modul(v2));
+}
