@@ -1,9 +1,0 @@
-ligth
-{
-	point
-	{
-		pos: -2, 10, 2;
-		color: 255, 255, 255;
-        intense: 0.6;
-	}
-}
