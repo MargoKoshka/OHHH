@@ -119,14 +119,13 @@ void	init_tab_obj(t_rtv *paint, char *src)
 	char	**tab;
 
 	line = NULL;
-    i = 0;
+    	i = 0;
 	if ((fd = open(src, O_RDONLY)) <= 0)
 		ft_exit("error can't open file\n");
-	get_next_line(fd, &line), tab = ft_strsplit(line, ' ');
 	while (get_next_line(fd, &line) > 0)
 	{
-		add_obj_to_tab(paint, tab, i);
-        i++;
+		add_obj_to_tab(paint, tab = ft_strsplit(line, ' '), i);
+        	i++;
 		ft_freetab(tab);
 		free(line);
 	}
